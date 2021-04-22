@@ -15,8 +15,8 @@ btnClick.addEventListener("click", function(e) {
   /* Tenemos que tomar el valor del input, la cantidad de carta que quiere y generarla con un for ;D*/
   let cantidadDeCartas = document.querySelector("#cantidadDeCartasInput").value;
 
-  if (cantidadDeCartas !== "" && cantidadDeCartas <= 8) {
-    for (let i = 0; i <= cantidadDeCartas; i++) {
+  if (cantidadDeCartas !== "" && cantidadDeCartas <= 10) {
+    for (let i = 0; i < cantidadDeCartas; i++) {
       /* ************************************************************* */
       /* CREAMOS 1 CARTA */
       var iconoSuperior = document.createElement("div");
@@ -78,17 +78,22 @@ btnClick.addEventListener("click", function(e) {
         iconos[numDelIconoInicial] == "♦" ||
         iconos[numDelIconoInicial] == "♥"
       ) {
-        let letradocument = document.querySelector("#iconoNum1");
-        let letradocument2 = document.querySelector("#iconoNum2");
-        letradocument.style.color = "red";
-        letradocument2.style.color = "red";
+        iconoSuperior.style.color = "red";
+        iconoInferior.style.color = "red";
       }
 
       /* Aca es donde :(  */
       /* Agregalo al mismo que */
-      document.querySelector("#numero").append(simbolo[numIconoCentro]);
-      document.querySelector("#iconoNum1").append(iconos[numDelIconoInicial]);
-      document.querySelector("#iconoNum2").append(iconos[numDelIconoInicial]);
+      /*  document.querySelector("#iconoNum1").append(iconos[numDelIconoInicial]);
+             document.querySelector("#numero").append(simbolo[numIconoCentro]);
+             document.querySelector("#iconoNum2").append(iconos[numDelIconoInicial]); */
+
+      iconoSuperior.append(iconos[numDelIconoInicial]);
+      numeroCentroDiv.append(simbolo[numIconoCentro]);
+      iconoInferior.append(iconos[numDelIconoInicial]);
     }
   }
+  /* Al hacer click que cree un metodo que solo con apretar en el otro boton se llame al metodo
+    Mientras tanto dentro del for crea un array con las cartas :D suerte...EXITO
+  */
 });
