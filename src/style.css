@@ -1,40 +1,49 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+p {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100%;
+  margin: 20px 40px;
+}
+
 body {
   background: #0e7e12;
 }
+.resultadoOrdenado {
+  margin-top: 100px;
+  width: 100%;
+  background: violet;
+}
 .contenedor {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.carta {
   color: #000000;
   border-radius: 15px;
-  width: 26%;
-  height: 500px;
-  margin: 100px auto;
+  width: 80px;
   background: #f3f3f3;
   position: relative;
 }
+
 /* A este le cambiamos el color */
-.icono1 {
-  margin-left: 20px;
-}
 .icono1,
 .icono2 {
-  font-size: 100px;
+  font-size: 30px;
 }
 .num {
-  font-size: 150px;
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  text-align: center;
 }
 
 .icono2 {
-  right: 20px;
-
-  /*  display: flex;
- align-items: flex-end; */
-  position: absolute;
-  bottom: 0%;
   width: 100%;
   transform: rotate(180deg);
-}
-.num {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

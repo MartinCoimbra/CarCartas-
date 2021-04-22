@@ -6,20 +6,61 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  //write your code here
+  /* ************************************************************* */
+  /* CREAMOS 1 CARTA */
+
+  var iconoSuperior = document.createElement("div");
+  iconoSuperior.classList.add("icono1");
+  var parrafoSup = document.createElement("p");
+  parrafoSup.setAttribute("id", "iconoNum1");
+  /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+  iconoSuperior.append(parrafoSup);
+
+  var numeroCentroDiv = document.createElement("div");
+  numeroCentroDiv.classList.add("num");
+  var parrafoMedio = document.createElement("p");
+  parrafoMedio.setAttribute("id", "numero");
+
+  /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+  numeroCentroDiv.append(parrafoMedio);
+
+  var iconoInferior = document.createElement("div");
+  iconoInferior.classList.add("icono2");
+  var parrafoBajo = document.createElement("p");
+  parrafoBajo.setAttribute("id", "iconoNum2");
+
+  /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+  iconoInferior.append(parrafoBajo);
+
+  var carta = document.createElement("div");
+  carta.classList.add("carta");
+  /* Agregamos todos nuestros 3 div al cartadiv */
+  carta.append(iconoSuperior);
+  carta.append(numeroCentroDiv);
+  carta.append(iconoInferior);
+
+  var contenedorAdd = document.querySelector("#contenedorAdd");
+  contenedorAdd.append(carta);
+  /* ************************************************************* */
+
+  /* Array con iconos */
   let iconos = ["♦", "♥", "♠", "♣"];
   /* 1 a 10, Rey, Reina, Jota o As */
   let simbolo = ["J", "Q", "R", "AS", 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  /* ************************************************************* */
   let numDelIconoInicial = -1;
   while (numDelIconoInicial === -1 || numDelIconoInicial === 4) {
     numDelIconoInicial = Math.floor(Math.random() * (5 - 1) - 1);
   }
-  let numIconoCentro = -1;
+  /* ************************************************************* */
 
   /* filtramos que no salga -1 o 13 */
+  let numIconoCentro = -1;
   while (numIconoCentro === -1 || numIconoCentro === 12) {
     numIconoCentro = Math.floor(Math.random() * (13 - 1) - 1);
   }
+  /* ************************************************************* */
 
   /* Cuando sea corazon o diamante lo ponemos en color rojo */
   if (iconos[numDelIconoInicial] == "♦" || iconos[numDelIconoInicial] == "♥") {
