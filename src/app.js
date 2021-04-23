@@ -60,7 +60,7 @@ btnClick.addEventListener("click", function(e) {
       /* Array con iconos */
       let iconos = ["♦", "♥", "♠", "♣"];
       /* 1 a 10, Rey, Reina, Jota o As */
-      let simbolo = ["J", "Q", "R", "AS", 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      let simbolo = ["J", "Q", "K", "Ⓐ", 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
       /* ************************************************************* */
       /* Que no me salga un numero fuera de rango */
@@ -108,19 +108,23 @@ ordenarCartas.addEventListener("click", function(e) {
   e.preventDefault();
 
   /* primero ordenamos con el metodo burbuja y luego vamos creando cada elemento con el for 
-    y luego al final nos fijamos el temita de si salen 2 cartas iguales..puede que eso te de error,
-    Capas creas tu ropia jerarquia de valor mayor ;D
-    */
+          y luego al final nos fijamos el temita de si salen 2 cartas iguales..puede que eso te de error,
+          Capas creas tu ropia jerarquia de valor mayor ;D
+          */
   /* Array ordenado */
-  console.log("Array Ordenado");
+  console.log("Array Ordenado por numeros");
   console.log(selectSort(los2Arr));
+  /* ponemos los as al final siempre */
+
+  /* Capas recorremos el array y le ponemos condicionales como IF los2Arr[i] == "AS lo guardamos en una variable y lo ponemso al final para ordenarlo" */
   /* guardamos el resultado burbuja en un arrray y usamos un for para insertarlos */
 });
 
 const selectSort = arr => {
   let min = 0;
-  while (min < arr.length - 1) {
-    for (let i = min + 1; i < arr.length - 1; i++) {
+  /* Ordenamos los numeros */
+  while (min < arr.length) {
+    for (let i = min + 1; i < arr.length; i++) {
       if (arr[min] > arr[i]) {
         let aux = arr[min];
         arr[min] = arr[i];
