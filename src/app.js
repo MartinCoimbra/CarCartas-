@@ -6,7 +6,9 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {};
-
+let arrayIconoTop = [];
+let arrayMedio = [];
+let los2Arr = [];
 /* EVENTO CLICK */
 var btnClick = document.querySelector("#generar");
 btnClick.addEventListener("click", function(e) {
@@ -14,7 +16,7 @@ btnClick.addEventListener("click", function(e) {
   document.getElementById("generar").disabled = true;
   /* Tenemos que tomar el valor del input, la cantidad de carta que quiere y generarla con un for ;D*/
   let cantidadDeCartas = document.querySelector("#cantidadDeCartasInput").value;
-
+  let z = 0;
   if (cantidadDeCartas !== "" && cantidadDeCartas <= 10) {
     for (let i = 0; i < cantidadDeCartas; i++) {
       /* ************************************************************* */
@@ -84,16 +86,48 @@ btnClick.addEventListener("click", function(e) {
 
       /* Aca es donde :(  */
       /* Agregalo al mismo que */
-      /*  document.querySelector("#iconoNum1").append(iconos[numDelIconoInicial]);
-             document.querySelector("#numero").append(simbolo[numIconoCentro]);
-             document.querySelector("#iconoNum2").append(iconos[numDelIconoInicial]); */
 
       iconoSuperior.append(iconos[numDelIconoInicial]);
       numeroCentroDiv.append(simbolo[numIconoCentro]);
       iconoInferior.append(iconos[numDelIconoInicial]);
+
+      /* Guardamos los valores. */
+
+      los2Arr[z] = [iconos[numDelIconoInicial], simbolo[numIconoCentro]];
+      z++;
     }
   }
-  /* Al hacer click que cree un metodo que solo con apretar en el otro boton se llame al metodo
-    Mientras tanto dentro del for crea un array con las cartas :D suerte...EXITO
-  */
+
+  console.log("array original");
+  console.log(los2Arr);
 });
+
+/* Segundo boton */
+var ordenarCartas = document.querySelector("#ordenarCartas");
+ordenarCartas.addEventListener("click", function(e) {
+  e.preventDefault();
+
+  /* primero ordenamos con el metodo burbuja y luego vamos creando cada elemento con el for 
+    y luego al final nos fijamos el temita de si salen 2 cartas iguales..puede que eso te de error,
+    Capas creas tu ropia jerarquia de valor mayor ;D
+    */
+  /* Array ordenado */
+  console.log("Array Ordenado");
+  console.log(selectSort(los2Arr));
+  /* guardamos el resultado burbuja en un arrray y usamos un for para insertarlos */
+});
+
+const selectSort = arr => {
+  let min = 0;
+  while (min < arr.length - 1) {
+    for (let i = min + 1; i < arr.length - 1; i++) {
+      if (arr[min][1] > arr[i][1]) {
+        let aux = arr[min];
+        arr[min] = arr[i];
+        arr[i] = aux;
+      }
+    }
+    min++;
+  }
+  return arr;
+};
