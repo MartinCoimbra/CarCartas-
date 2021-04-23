@@ -6,11 +6,11 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {};
-let arrayIconoTop = [];
-let arrayMedio = [];
+
 let los2Arr = [];
-/* EVENTO CLICK */
+/* Primer boton */
 var btnClick = document.querySelector("#generar");
+/* EVENTO CLICK */
 btnClick.addEventListener("click", function(e) {
   e.preventDefault();
   document.getElementById("generar").disabled = true;
@@ -104,6 +104,7 @@ btnClick.addEventListener("click", function(e) {
 
 /* Segundo boton */
 var ordenarCartas = document.querySelector("#ordenarCartas");
+/* EVENTO CLICK */
 ordenarCartas.addEventListener("click", function(e) {
   e.preventDefault();
 
@@ -146,22 +147,13 @@ ordenarCartas.addEventListener("click", function(e) {
     /* Agregamos la carta que creamos a el html */
     var contenedorAdd = document.querySelector("#CartasOrdenadas");
     contenedorAdd.append(carta);
-    /* Agregamos los valores */
-
-    /* Aca trabajoamos con el array que esta al momento y lo agregamos */
+    /* ************************************************************* */
 
     /* Cuando sea corazon o diamante lo ponemos en color rojo */
-    /* if (
-      iconos[numDelIconoInicial] == "♦" ||
-      iconos[numDelIconoInicial] == "♥"
-    ) {
+    if (arrayOrdenado[i][1] == "♦" || arrayOrdenado[i][1] == "♥") {
       iconoSuperior.style.color = "red";
       iconoInferior.style.color = "red";
     }
- */
-    /* Aca es donde :(  */
-    /* Agregalo al mismo que */
-
     iconoSuperior.append(arrayOrdenado[i][1]);
     numeroCentroDiv.append(arrayOrdenado[i][0]);
     iconoInferior.append(arrayOrdenado[i][1]);
