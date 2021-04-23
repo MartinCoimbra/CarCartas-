@@ -107,19 +107,68 @@ var ordenarCartas = document.querySelector("#ordenarCartas");
 ordenarCartas.addEventListener("click", function(e) {
   e.preventDefault();
 
-  /* primero ordenamos con el metodo burbuja y luego vamos creando cada elemento con el for 
-          y luego al final nos fijamos el temita de si salen 2 cartas iguales..puede que eso te de error,
-          Capas creas tu ropia jerarquia de valor mayor ;D
-          */
-  /* Array ordenado */
-  console.log("Array Ordenado por numeros");
-  console.log(selectSort(los2Arr));
-  /* ponemos los as al final siempre */
+  let arrayOrdenado = [];
+  arrayOrdenado = selectSort(los2Arr);
 
-  /* Capas recorremos el array y le ponemos condicionales como IF los2Arr[i] == "AS lo guardamos en una variable y lo ponemso al final para ordenarlo" */
-  /* guardamos el resultado burbuja en un arrray y usamos un for para insertarlos */
+  for (let i = 0; i < arrayOrdenado.length; i++) {
+    /*  */
+    /* CREAMOS 1 CARTA */
+    var iconoSuperior = document.createElement("div");
+    iconoSuperior.classList.add("icono1");
+    var parrafoSup = document.createElement("p");
+    parrafoSup.setAttribute("id", "iconoNum1");
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    iconoSuperior.append(parrafoSup);
+
+    var numeroCentroDiv = document.createElement("div");
+    numeroCentroDiv.classList.add("num");
+    var parrafoMedio = document.createElement("p");
+    parrafoMedio.setAttribute("id", "numero");
+
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    numeroCentroDiv.append(parrafoMedio);
+
+    var iconoInferior = document.createElement("div");
+    iconoInferior.classList.add("icono2");
+    var parrafoBajo = document.createElement("p");
+    parrafoBajo.setAttribute("id", "iconoNum2");
+
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    iconoInferior.append(parrafoBajo);
+
+    var carta = document.createElement("div");
+    carta.classList.add("carta");
+    /* Agregamos todos nuestros 3 div al cartadiv */
+    carta.append(iconoSuperior);
+    carta.append(numeroCentroDiv);
+    carta.append(iconoInferior);
+
+    /* Agregamos la carta que creamos a el html */
+    var contenedorAdd = document.querySelector("#CartasOrdenadas");
+    contenedorAdd.append(carta);
+    /* Agregamos los valores */
+
+    /* Aca trabajoamos con el array que esta al momento y lo agregamos */
+
+    /* Cuando sea corazon o diamante lo ponemos en color rojo */
+    /* if (
+      iconos[numDelIconoInicial] == "♦" ||
+      iconos[numDelIconoInicial] == "♥"
+    ) {
+      iconoSuperior.style.color = "red";
+      iconoInferior.style.color = "red";
+    }
+ */
+    /* Aca es donde :(  */
+    /* Agregalo al mismo que */
+
+    iconoSuperior.append(arrayOrdenado[i][1]);
+    numeroCentroDiv.append(arrayOrdenado[i][0]);
+    iconoInferior.append(arrayOrdenado[i][1]);
+  }
 });
 
+/* METODO BURBUJA PARA ORDENAR LAS CARTAS */
 const selectSort = arr => {
   let min = 0;
   /* Ordenamos los numeros */
