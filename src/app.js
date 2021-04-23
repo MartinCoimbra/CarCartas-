@@ -5,15 +5,20 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {};
+window.onload = function() {
+  document.getElementById("ordenarCartas").disabled = true;
+};
 
 let los2Arr = [];
+
+/* ********************************************************** */
 /* Primer boton */
 var btnClick = document.querySelector("#generar");
 /* EVENTO CLICK */
 btnClick.addEventListener("click", function(e) {
   e.preventDefault();
   document.getElementById("generar").disabled = true;
+  document.getElementById("ordenarCartas").disabled = false;
   /* Tenemos que tomar el valor del input, la cantidad de carta que quiere y generarla con un for ;D*/
   let cantidadDeCartas = document.querySelector("#cantidadDeCartasInput").value;
   let z = 0;
@@ -101,13 +106,71 @@ btnClick.addEventListener("click", function(e) {
   console.log("array original");
   console.log(los2Arr);
 });
-
+/* ********************************************************** */
 /* Segundo boton */
 var ordenarCartas = document.querySelector("#ordenarCartas");
 /* EVENTO CLICK */
 ordenarCartas.addEventListener("click", function(e) {
   e.preventDefault();
+  document.getElementById("generar").disabled = false;
+  document.getElementById("ordenarCartas").disabled = true;
 
+  let arrayOrdenado = [];
+  arrayOrdenado = bubbleSort(los2Arr);
+
+  for (let i = 0; i < arrayOrdenado.length; i++) {
+    /*  */
+    /* CREAMOS 1 CARTA */
+    var iconoSuperior = document.createElement("div");
+    iconoSuperior.classList.add("icono1");
+    var parrafoSup = document.createElement("p");
+    parrafoSup.setAttribute("id", "iconoNum1");
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    iconoSuperior.append(parrafoSup);
+
+    var numeroCentroDiv = document.createElement("div");
+    numeroCentroDiv.classList.add("num");
+    var parrafoMedio = document.createElement("p");
+    parrafoMedio.setAttribute("id", "numero");
+
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    numeroCentroDiv.append(parrafoMedio);
+
+    var iconoInferior = document.createElement("div");
+    iconoInferior.classList.add("icono2");
+    var parrafoBajo = document.createElement("p");
+    parrafoBajo.setAttribute("id", "iconoNum2");
+
+    /* Agregamos la etiqueta p dentro de su padre segun la estructura */
+    iconoInferior.append(parrafoBajo);
+
+    var carta = document.createElement("div");
+    carta.classList.add("carta");
+    /* Agregamos todos nuestros 3 div al cartadiv */
+    carta.append(iconoSuperior);
+    carta.append(numeroCentroDiv);
+    carta.append(iconoInferior);
+
+    /* Agregamos la carta que creamos a el html */
+    var contenedorAdd = document.querySelector("#CartasOrdenadas");
+    contenedorAdd.append(carta);
+    /* ************************************************************* */
+
+    /* Cuando sea corazon o diamante lo ponemos en color rojo */
+    if (arrayOrdenado[i][1] == "♦" || arrayOrdenado[i][1] == "♥") {
+      iconoSuperior.style.color = "red";
+      iconoInferior.style.color = "red";
+    }
+    iconoSuperior.append(arrayOrdenado[i][1]);
+    numeroCentroDiv.append(arrayOrdenado[i][0]);
+    iconoInferior.append(arrayOrdenado[i][1]);
+  }
+});
+/* ********************************************************** */
+/* ****************** METODO SELECT ************************* */
+/* ********************************************************** */
+const selectElement = document.querySelector("#ordenadorSeleID");
+selectElement.addEventListener("change", event => {
   let arrayOrdenado = [];
   arrayOrdenado = selectSort(los2Arr);
 
@@ -159,6 +222,24 @@ ordenarCartas.addEventListener("click", function(e) {
     iconoInferior.append(arrayOrdenado[i][1]);
   }
 });
+/* ********************************************************** */
+const bubbleSort = arr => {
+  let wall = arr.length - 1; //we start the wall at the end of the array
+  while (wall > 0) {
+    let index = 0;
+    while (index < wall) {
+      //compare the adjacent positions, if the right one is bigger, we have to swap
+      if (arr[index] > arr[index + 1]) {
+        let aux = arr[index];
+        arr[index] = arr[index + 1];
+        arr[index + 1] = aux;
+      }
+      index++;
+    }
+    wall--; //decrease the wall for optimization
+  }
+  return arr;
+};
 
 /* METODO BURBUJA PARA ORDENAR LAS CARTAS */
 const selectSort = arr => {

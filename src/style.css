@@ -33,6 +33,7 @@ body {
   color: #000000;
   border-radius: 15px;
   width: 80px;
+  border: solid 2px #000000;
   background: #f3f3f3;
   position: relative;
 }
